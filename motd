@@ -1,0 +1,641 @@
+
+
+
+
+options:
+    # Server list motds. If you want to use the second line use the %nl% expression. Example:
+    # motd32: Hello %nl% there
+    motd1: 1
+    motd2: 2
+    motd3: 3
+    motd4: 4
+    motd5: 5
+    motd6: 6
+    motd7: 7
+    motd8: 8
+    motd9: 9
+    motd10: 10
+    motd11: 11
+    motd12: 12
+    motd13: 13
+    motd14: 14
+    motd15: 15
+    motd16: 16
+    motd17: 17
+    motd18: 18
+    motd19: 19
+    motd20: 20
+    motd21: 21
+    motd22: 22
+    motd23: 23
+    motd24: 24
+    motd25: 25
+    motd26: 26
+    motd27: 27
+    motd28: 28
+    motd29: 29
+    motd30: 30
+    motd31: 31
+    motd32: 32
+    motd33: 33
+    motd34: 34
+    motd35: 35
+    motd36: 36
+    motd37: 37
+    motd38: 38
+    motd39: 39
+    motd40: 40
+    motd41: 41
+    motd42: 42
+    motd43: 43
+    motd44: 44
+    motd45: 45
+    motd46: 46
+    motd47: 47
+    motd48: 48
+    motd49: 49
+    motd50: 50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+on server ping:
+    set {_motd} to a random integer between 1 and 50
+    if {_motd} = 1:
+        set motd to "{@motd1}"
+    if {_motd} = 2:
+        set motd to "{@motd2}"
+    if {_motd} = 3:
+        set motd to "{@motd3}"
+    if {_motd} = 4:
+        set motd to "{@motd4}"
+    if {_motd} = 5:
+        set motd to "{@motd5}"
+    if {_motd} = 6:
+        set motd to "{@motd6}"
+    if {_motd} = 7:
+        set motd to "{@motd7}"
+    if {_motd} = 8:
+        set motd to "{@motd8}"
+    if {_motd} = 9:
+        set motd to "{@motd9}"
+    if {_motd} = 10:
+        set motd to "{@motd10}"
+    if {_motd} = 11:
+        set motd to "{@motd11}"
+    if {_motd} = 12:
+        set motd to "{@motd12}"
+    if {_motd} = 13:
+        set motd to "{@motd13}"
+    if {_motd} = 14:
+        set motd to "{@motd14}"
+    if {_motd} = 15:
+        set motd to "{@motd15}"
+    if {_motd} = 16:
+        set motd to "{@motd16}"
+    if {_motd} = 17:
+        set motd to "{@motd17}"
+    if {_motd} = 18:
+        set motd to "{@motd18}"
+    if {_motd} = 19:
+        set motd to "{@motd19}"
+    if {_motd} = 20:
+        set motd to "{@motd20}"
+    if {_motd} = 21:
+        set motd to "{@motd21}"
+    if {_motd} = 22:
+        set motd to "{@motd22}"
+    if {_motd} = 22:
+        set motd to "{@motd22}"
+    if {_motd} = 23:
+        set motd to "{@motd23}"
+    if {_motd} = 24:
+        set motd to "{@motd24}"
+    if {_motd} = 25:
+        set motd to "{@motd25}"
+    if {_motd} = 26:
+        set motd to "{@motd26}"
+    if {_motd} = 27:
+        set motd to "{@motd27}"
+    if {_motd} = 28:
+        set motd to "{@motd28}"
+    if {_motd} = 29:
+        set motd to "{@motd29}"
+    if {_motd} = 30:
+        set motd to "{@motd30}"
+    if {_motd} = 31:
+        set motd to "{@motd31}"
+    if {_motd} = 32:
+        set motd to "{@motd32}"
+    if {_motd} = 33:
+        set motd to "{@motd33}"
+    if {_motd} = 34:
+        set motd to "{@motd34}"
+    if {_motd} = 35:
+        set motd to "{@motd35}"
+    if {_motd} = 36:
+        set motd to "{@motd36}"
+    if {_motd} = 37:
+        set motd to "{@motd37}"
+    if {_motd} = 38:
+        set motd to "{@motd38}"
+    if {_motd} = 39:
+        set motd to "{@motd39}"
+    if {_motd} = 40:
+        set motd to "{@motd40}"
+    if {_motd} = 41:
+        set motd to "{@motd41}"
+    if {_motd} = 42:
+        set motd to "{@motd42}"
+    if {_motd} = 43:
+        set motd to "{@motd43}"
+    if {_motd} = 44:
+        set motd to "{@motd44}"
+    if {_motd} = 45:
+        set motd to "{@motd45}"
+    if {_motd} = 46:
+        set motd to "{@motd46}"
+    if {_motd} = 47:
+        set motd to "{@motd47}"
+    if {_motd} = 48:
+        set motd to "{@motd48}"
+    if {_motd} = 49:
+        set motd to "{@motd49}"
+    if {_motd} = 50:
+        set motd to "{@motd50}"
+
+
+
+
+
