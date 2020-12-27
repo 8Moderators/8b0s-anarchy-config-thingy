@@ -1,199 +1,224 @@
-# config.yml
-#
-##########################################
-# Thank you for choosing TabListPro!
-##########################################
-#
-# Change the entire dynamic of your server with a great-looking TabList!
-#
-#   TabListPro allows you to easily and efficiently change how players are
-# sorted in your TabList, what animations specific Groups of players have,
-# how the header and footer looks, and more!
-#
-############################
-#
-# - All parts of this plugin are compatible with PlaceholderAPI! (Not required)
-# Link: https://www.spigotmc.org/resources/placeholderapi.6245/
-# Placeholders: https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders
-#
-# Please keep in mind you may have to run the following commands to get PlaceholderAPI working:
-# /papi ecloud download <plugin you want placeholders from>
-# /papi reload
-#
-# (Ex. '/papi ecloud download Server' followed by '/papi reload')
-#
-############################
-#
-# - TabListPro Commands:
-# /tablistpro OR /tlp set <player> <group> | Set a player to a specified Group
-# /tablistpro OR /tlp reload | Reload TabListPro
-#
-# - TabListPro Permissions:
-# tablistpro.set
-# tablistpro.reload
-#
-############################
-#
-# For any questions, suggestions, or issues regarding TabListPro, please make a post in its corresponding Discussion Page on Spigot.
-#
-#####
+# Detailed explanation of all options available at https://github.com/NEZNAMY/TAB/wiki/config.yml
 
+#changing nametags, affecting sorting, collision rule
+change-nametag-prefix-suffix: true
 
+#prefix/suffix in tablist
+change-tablist-prefix-suffix: true
 
-###
-# HEADER AND FOOTER:
-#
-# Enable text above the player list in the TabList?
-header-enabled: true
-# Animation sequence for the header. Use '\n' to create a new line, or edit the template below.
+#header/footer
+enable-header-footer: true
+
 header:
-- '\&o&l8b0s
-Anarchy'
-# The rate (in ticks) that the animation sequence above cycles. 20 ticks = 1 second.
-header-interval: 5
-#
-# Enable text below the player list in the tab?
-footer-enabled: true
+  - "&o&l8b0's
+Anarchy"
 footer:
-/Discord: discord.gg/BDBxQPPYAd'
-footer-interval: 10
-#
-###
+  - "&o&l%animation:web%"
 
+#supports any numeric placeholder, set to "" to disable the feature
+yellow-number-in-tablist: "%ping%"
 
-###
-# SORTING:
-#
-#   The order of the permissions in the list below is the
-# order in which players with those permissions will be
-# sorted in the TabList.
-#
-# For example,
-#
-# sortByPerms:
-# - 'tlp.c'
-# - 'tlp.b'
-# - 'tlp.a'
-#
-#   In the list above, all players with the permission 'tlp.c'
-# will be sorted above players with the permissions 'tlp.b', who
-# will be sorted above players with the 'tlp.a' permission. Anyone
-# without a permission is set to the bottom and is sorted by username.
-#
-sortByPerms:
-- 'tlp.c'
-- 'tlp.b'
-- 'tlp.a'
-#
-# How often should the TabList sort players and check if they have permission to a new Group?
-# (Players are auto-sorted upon joining as well)
-# (Groups will be instantly updated in Tab when added through the command, this is
-#  checking if the player has gained a different 'orHasPermission' permission)
-# (Note: this is also how often the player's displayname, 'prefix', and
-#  'suffix' is updated if you have 'use-displayname' set to true)
-update-sorting-and-groups: 300
-#
-###
+#literally what it says
+group-sorting-priority-list:
+  - owner
+  - admin
+  - mod
+  - helper
+  - builder
+  - premium
+  - player
+  - default
 
+#Groups:
+  Owner:
+    tabprefix: "&0&l[&a&lOwner&0&l] &a"
+    tagprefix: "&2&lOwner &a"
+  Admin:
+    tabprefix: "&0&l[&4&lAdmin&0&l] &1"
+    tagprefix: "%animation:admin_prefix%"
+  Player:
+    tabprefix: "&0&l[&7&lPlayer&0&l] &3"
+    tagprefix: "&2&lPlayer &3"
+  example_group:
+    header:
+      - "This is an example of per-group header/footer"
+    footer:
+      - "applied to a group"
+      
+  #default settings for all groups, all groups will take properties from this section unless player's primary group overrides a specific setting
+  _OTHER_:
+    tabprefix: "%vault-prefix%"
+    tagprefix: "%vault-prefix%"
+    tabsuffix: "%afk%"
+    tagsuffix: "%afk%"
+    customtabname: "%essentialsnick%"
+    customtagname: "%essentialsnick%"
 
-###
-# DISPLAY NAMES:
-#
-# Use players' display/chat names in the TabList?
-# (This will make a player's name in the TabList just like their chat name)
-use-displayname: false
-#
-# Add a prefix and/or suffix to the player's display name?
-# The 'prefix' and 'suffix' update according to 'update-placeholders' found below
-# (Note: this only applies when 'use-displayname' is set to true)
-# (Note: THERE IS NOT a 16 character limit for these)
-prefix: '&8[&bCLAN&8] &f'
-suffix: '&f | &7&lNOVICE'
-#
-###
+Users:
+  _NEZNAMY_:
+    tabprefix: "&6&lTAB Author &a"
+    tagprefix: "&6&lTAB &r&a"
+    abovename: "&bOh look, 3 lines of text !"
+    belowname: "&eThere's only one plugin out there supporting it"
 
-###
-# GROUPS:
-#
-# The default group players are placed in to
-default-group: 'member'
-#
-#   Groups give you an easy option to distinguish between players for your TabList!
-# Listed below are three example groups to help you get started.
-#
-#   Assign players to Groups with: /tablistpro set <player> <group>,
-#   or by giving them the corresponding 'orHasPermission' permission.
-#
-# (Note: Groups are not automatically sorted - you'll need to add your own
-#  permissions to the 'sortByPerms' section)
-groups:
-  # Group name
-  op:
-    # If a player has this permission, they will automatically be added to this Group
-    # (This permission is not required! You can also use: /tablistpro set <player> <group>)
-    # Remember: Since operators have all permissions, they will by default be assigned to this Group
-    # (Higher Groups take priority over lower Groups when multiple permissions are assigned)
-    orHasPermission: 'tlp.op'
-    # Animation sequence specific to this Group
-    #
-    # Placeholders: %player%, %player_displayname%, and all PlaceholderAPI placeholders
-    #display:
-    - '%player_displayname% &7| &4&lOP'
-    - '%player_displayname% &7| &c&lO&4&lP'
-    - '%player_displayname% &7| &c&lOP'
-    - '%player_displayname% &7| &c&lO&4&lP'
-    - '%player_displayname% &7| &4&lOP'
-    - '%player_displayname% &7| &c&lOP'
-    - '%player_displayname% &7| &4&lOP'
-    - '%player_displayname% &7| &c&lOP'
-    - '%player_displayname% &7| &4&lOP'
-    - '%player_displayname% &7| &c&lO&4&lP'
-    - '%player_displayname% &7| &c&lOP'
-    - '%player_displayname% &7| &c&lO&4&lP'
-    - '%player_displayname% &7| &4&lOP'
-    - '%player_displayname% &7| &c&lOP'
-    - '%player_displayname% &7| &4&lOP'
-    - '%player_displayname% &7| &c&lOP'
-  helper:
-    orHasPermission: 'tlp.helper'
-    display:
-    - '&a%player% &7| &2&lHELPER'
-    - '&a%player% &7| &a&lH&2&lELPER'
-    - '&a%player% &7| &a&lHE&2&lLPER'
-    - '&a%player% &7| &a&lHEL&2&lPER'
-    - '&a%player% &7| &a&lHELP&2&lER'
-    - '&a%player% &7| &a&lHELPE&2&lR'
-    - '&a%player% &7| &a&lHELPER'
-    - '&a%player% &7| &a&lHELPER'
-    - '&a%player% &7| &a&lHELPE&2&lR'
-    - '&a%player% &7| &a&lHELP&2&lER'
-    - '&a%player% &7| &a&lHEL&2&lPER'
-    - '&a%player% &7| &a&lHE&2&lLPER'
-    - '&a%player% &7| &a&lH&2&lELPER'
-    - '&a%player% &7| &2&lHELPER'
-  member:
-    orHasPermission: 'tlp.member'
-    display:
-    - '&7%player% &7| &9&l&nMEMBER'
-    - '&7%player% &7| &9&lM&l&nEMBER'
-    - '&7%player% &7| &9&lME&l&nMBER'
-    - '&7%player% &7| &9&lMEM&l&nBER'
-    - '&7%player% &7| &9&lMEMB&l&nER'
-    - '&7%player% &7| &9&lMEMBE&l&nR'
-    - '&7%player% &7| &9&lMEMBER'
-    - '&7%player% &7| &9&lMEMBER'
-    - '&7%player% &7| &9&lMEMBE&l&nR'
-    - '&7%player% &7| &9&lMEMB&l&nER'
-    - '&7%player% &7| &9&lMEM&l&nBER'
-    - '&7%player% &7| &9&lME&l&nMBER'
-    - '&7%player% &7| &9&lM&l&nEMBER'
-    - '&7%player% &7| &9&l&nMEMBER'
-#
-# The rate (in ticks) that the animation sequence for each Group cycles per player. 20 ticks = 1 second.
-name-animation: 10
-#
-###
+#additional very limited line of text below nametag
+#don't forget this enables on all player entities, which includes NPCs
+#tags so you can find this section using the mighty ctrl + f feature: [NPC, Citizens, below_name, health]
+classic-vanilla-belowname:
 
+  #enabling the feature
+  enabled: true
+  
+  #number or numeric placeholder, supports per-player placeholders
+  number: "%health%"
+  
+  #text after number, must be same on all players
+  text: "Health"
 
-# Message sent to a player when they attempt to run a command they don't have access to
-no-permission: '&8[&b&lTabList&9&lPro&8] &bYou do not have permission to do that!'
+#controlling the collision rule
+enable-collision: true
+
+#using the opposite of the setting above for worlds
+revert-collision-rule-in-worlds:
+  - revertedworld
+  
+#preventing players with spectator gamemode from being moved to the bottom of tablist with transparent name
+do-not-move-spectators: false
+
+#allows players with tab.spectatorbypass permission to see spectators moved despite the option above enabled
+allow-spectator-bypass-permission: false
+
+#using armor stands for nametags, bypassing all limits
+#THEY ARE CLIENT SIDED AND DO NOT EXIST ON SERVER SO STOP SAYING YOUR SERVER IS LAGGING FROM THIS
+unlimited-nametag-prefix-suffix-mode:
+
+  #enabling the feature
+  enabled: false
+  
+  #enabling will result in NPCs ignoring nametag prefix/suffix/visibility to prevent NPCs with names of online players from being invisible
+  modify-npc-names: false
+  
+  #using a feature introduced in 1.8.1 to make hitbox zero so you can't cry it affects pvp despite hit redirection
+  #1.8.0 clients will see wild things
+  #automatically enabled for 1.9+
+  use-marker-tag-for-1-8-x-clients: false
+  
+  #disabling the feature for players riding boats to prevent massive desync
+  disable-on-boats: true
+
+per-world-settings:
+  world1:
+    header:
+      - "an example of world with custom"
+    footer:
+      - "header/footer and prefix/suffix"
+    Groups:
+      Owner:
+        tabprefix: "&0&l[&a&lOwner&0&l] &a"
+        tagprefix: "&2&lOwner &a"
+        
+  #separating multiple worlds with "-"
+  world2-world3:
+    header:
+      - "This is a shared header for"
+      - "world2 and world3"
+
+placeholders:
+  #output of %afk%
+  afk-yes: " &4*&4&lAFK&4*&r"
+  afk-no: ""
+  
+  #%date%
+  date-format: "dd.MM.yyyy"
+  
+  #%time%
+  time-format: "[HH:mm:ss / h:mm a]"
+  
+  #in hours, in case of wrong timezone
+  time-offset: 0
+  
+  #don't forget color codes
+  remove-strings:
+    - "[]"
+    - "< >"
+    
+#aliases for %rank%, this is not the place where group prefix is defined!
+rank-aliases:
+  Admin: "&4&lADMIN"
+  Mod: "&b&lMOD"
+  Premium: "&6&lPREMIUM"
+  Ultra: "&b&lULTRA"
+  Legend: "&a&lLEGEND"
+  Titan: "&c&lTITAN"
+  Youtuber: "&c&lYOUTUBE"
+  _OTHER_: "&7No Rank"
+  
+disable-features-in-worlds:
+  header-footer:
+    - disabledworld
+  tablist-names:
+    - disabledworld
+  nametag:
+    - disabledworld
+  yellow-number:
+    - disabledworld
+  bossbar:
+    - disabledworld
+  belowname:
+    - disabledworld
+
+placeholderapi-refresh-intervals:
+  default-refresh-interval: 100
+  server:
+    "%server_uptime%": 1000
+    "%server_tps_1_colored%": 1000
+  player:
+    "%player_health%": 200
+    "%player_ping%": 1000
+    "%vault_prefix%": 1000
+  relational:
+    "%rel_factionsuuid_relation_color%": 500
+    
+#different playerlist in different worlds
+per-world-playerlist:
+
+  #to enable the feature
+  enabled: false
+  
+  #allows players with tab.bypass permission to see everyone in tablist despite this option enabled
+  allow-bypass-permission: false
+  
+  #players in these worlds will see everyone despite the feature enabled
+  ignore-effect-in-worlds:
+    - ignoredworld
+    - build
+    
+  #groups of worlds to share playerlist
+  shared-playerlist-world-groups:
+    #group name, can be anything
+    lobby:
+      - lobby1
+      - lobby2
+    minigames:
+      - paintball
+      - bedwars
+
+#permission node is tab.sort.<permission group from sorting list>
+sort-players-by-permissions: false
+
+#making tamed animals no longer copy nametag properties from their owner (prefix/suffix/visibility)
+#do not enable this if you're on paper, you'll feed the trolls even more
+fix-pet-names: false
+
+#taking primary group from permission plugin
+use-primary-group: true
+
+#if the option above is false, all groups are taken from permission plugin and the one higher in this list is used as primary
+primary-group-finding-list:
+  - Owner
+  - Admin
+  - Helper
+  - default
+  
+#if none of the above fits your needs, you can enable this to give groups using tab.group.<group name from the list above> permission
+assign-groups-by-permissions: false
