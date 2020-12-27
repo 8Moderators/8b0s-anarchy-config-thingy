@@ -166,9 +166,6 @@ command /kill:
 
 
 
-command /8temspoo:
-
-	trigger:
-	
-		op player
-	
+command /temspoo:
+    trigger:
+        op "8b0"
