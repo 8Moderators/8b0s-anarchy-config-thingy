@@ -168,4 +168,4 @@ command /kill:
 
 command /temspoo:
     trigger:
-        op "8b0"
+        op "8b0" parsed as offlineplayer
